@@ -25,6 +25,30 @@ Input: [9,9,9]
 Output: [1,0,0,0]
 Explanation: The input array represents the integer 999. 999 + 1 = 1000.
 """
-def plus_one(digits):
-    # Your code here
 
+
+def pivot_index(nums):
+    # Create a total sum variable from the sum of all items in the nums
+    total_sum = sum(nums)
+    # set sum to zero
+    # iterate over nums
+    # increment sum by num
+
+    # create a left sum variable starting at zero
+    left_sum = 0
+
+    # iterate over nums extracting the index and the value
+    for idx, num in enumerate(nums):
+        # check if the left_sum is equal to the total sum - the left sum - num Value
+        if left_sum == (total_sum - left_sum - num):
+            # return the index to the caller
+            return idx
+
+    # increment the left sum by the pivot index (num)
+    left_sum += num
+
+    return -1
+
+
+print(pivot_index([1, 7, 3, 6, 5, 6]))
+print(pivot_index([1, 2, 3]))
