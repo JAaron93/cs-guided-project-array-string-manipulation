@@ -22,45 +22,28 @@ There is no index that satisfies the conditions in the problem statement.
 """
 
 
-# def plus_one(digits):
-#     # get the len of the list and set it to a variable n
-#     n = len(digits)
+def pivot_index(nums):
+    # Create a total sum variable from the sum of all items in the nums
+    total_sum = sum(nums)
+    # set sum to zero
+    # iterate over nums
+    # increment sum by num
 
-#     # iterate over the digits using the index of i
-#     for i in range(n):
-#         # create an index from n - 2 - i to reverse the conceptual flow of the data
-#         idx = n - 1 - i
+    # create a left sum variable starting at zero
+    left_sum = 0
 
-#         # check if the digits at the index are equal to 9
-#         if digits[idx] == 9:
-#             # set the digits at the index to zero
-#             digits[idx] = 0
-#         # otherwise
-#         else:
-#             # increment the digits at index
-#             digits[idx] += 1
-#             # return the digits to the caller
-#             return digits
+    # iterate over nums extracting the index and the value
+    for idx, num in enumerate(nums):
+        # check if the left_sum is equal to the total sum - the left sum - num Value
+        if left_sum == (total_sum - left_sum - num):
+            # return the index to the caller
+            return idx
 
-#     # return the digits with a 1 perpended to them
-#     # Doesn't matter how many 9s, we're just pushing 1 to the front of the list
-#     return [1] + digits
+    # increment the left sum by the pivot index (num)
+    left_sum += num
+
+    return -1
 
 
-# Devin's method
-# def plus_one(digits):
-#     strArr = [str(digit) for digit in digits]
-#     num = int(''.join(strArr))
-#     num += 1
-#     numArr = [int(digit) for digit in str(num)]
-#     return numArr
-
-# Justin's method
-def plus_one(digits):
-    output_str = [str(i) for i in digits]
-    output_num = int(''.join(output_str)) + 1
-    return list(map(int, str(output_num)))
-
-
-print(plus_one([1, 3, 2]))
-print(plus_one([3, 2, 1, 9]))
+print(pivot_index([1, 7, 3, 6, 5, 6]))
+print(pivot_index([1, 2, 3]))
